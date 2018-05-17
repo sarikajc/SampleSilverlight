@@ -1,0 +1,8 @@
+D:\Personal\Silverlight\FinalAssignment\FinalAssignment.Web\bin\FinalAssignment.Web.dll.config
+D:\Personal\Silverlight\FinalAssignment\FinalAssignment.Web\bin\FinalAssignment.Web.dll
+D:\Personal\Silverlight\FinalAssignment\FinalAssignment.Web\bin\FinalAssignment.Web.pdb
+D:\Personal\Silverlight\FinalAssignment\FinalAssignment.Web\bin\Mvvm.dll
+D:\Personal\Silverlight\FinalAssignment\FinalAssignment.Web\bin\Mvvm.xml
+D:\Personal\Silverlight\FinalAssignment\FinalAssignment.Web\obj\Debug\FinalAssignment.Web.dll
+D:\Personal\Silverlight\FinalAssignment\FinalAssignment.Web\obj\Debug\FinalAssignment.Web.pdb
+D:\Personal\Silverlight\FinalAssignment\FinalAssignment.Web\obj\Debug\FinalAssignment.Web.csprojResolveAssemblyReference.cache

@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="FinalAssignment.Views.MedicationListItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:hlp="clr-namespace:FinalAssignment.Helpers" 
+    Style="{StaticResource UserControlFont}"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <hlp:BooleanToVisibilityConverter x:Key="bool2vis"></hlp:BooleanToVisibilityConverter>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White"  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="txtMedication" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=MedicineName}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" />
+        <Button Content="Edit"  Command="{Binding  Path=EditMedication}"  CommandParameter="{Binding ElementName=LayoutRoot, Path=DataContext}" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1"  />
+        
+        <Border Style="{StaticResource RoundedBorderComplete}" Grid.Row="1" Grid.Column="0" Visibility="{Binding Path=IsComplete, Converter={StaticResource bool2vis}}">
+            <TextBlock x:Name="txtStatusComplete" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Complete" VerticalAlignment="Top" Visibility="{Binding Path=IsComplete, Converter={StaticResource bool2vis}}" Style="{StaticResource MedicationStatusComplete}" />
+            </Border>
+        <Border  Style="{StaticResource RoundedBorderInProgress}" Grid.Row="1" Grid.Column="0" Visibility="{Binding Path=IsInProgress, Converter={StaticResource bool2vis}}" >
+            <TextBlock x:Name="txtStatusInProgress" HorizontalAlignment="Left" TextWrapping="Wrap" Text="In Progress" VerticalAlignment="Top" Visibility="{Binding Path=IsInProgress, Converter={StaticResource bool2vis}}" Style="{StaticResource MedicationStatusInprogress}" />
+            </Border>
+        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan ="2" Orientation="Horizontal">
+            <TextBlock x:Name="txtStartDate" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding StartDate}" VerticalAlignment="Top"/>
+            <TextBlock   HorizontalAlignment="Left" TextWrapping="Wrap" Text="to" VerticalAlignment="Top"/>
+            <TextBlock x:Name="txtEndDate" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding StartDate}" VerticalAlignment="Top"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan ="2" Orientation="Horizontal">
+            <TextBlock x:Name="txtDosage" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Dosage}" VerticalAlignment="Top"/>
+            <TextBlock   HorizontalAlignment="Left" TextWrapping="Wrap" Text=" | " VerticalAlignment="Top"/>
+            <TextBlock x:Name="txtFrequency" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Frequency}" VerticalAlignment="Top"/>
+        </StackPanel>
+
+        <StackPanel  Grid.Row="4" Grid.Column="0" Orientation="Vertical">
+            <HyperlinkButton Content="More Info"  Command="{Binding Path=ShowMoreInfo}" Visibility="{Binding IsInProgress, Converter={StaticResource bool2vis}}"/>
+            <TextBlock x:Name="txtNote" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Note}" VerticalAlignment="Top" 
+                       Visibility="{Binding ToggleDisplay, Converter={StaticResource bool2vis}}"/>
+        </StackPanel>
+ 
+        
+        <Button Content="Stop" Command="{Binding  Path=StopMedication}"  Width="30" Visibility="{Binding IsInProgress, Converter={StaticResource bool2vis}}" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="5,5,5,5" Background="CadetBlue"   />
+        <Button Content="Restart" Command="{Binding  Path=RestartMedication}" Visibility="{Binding IsComplete, Converter={StaticResource bool2vis}}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center"   />
+    </Grid>   
+</UserControl>
